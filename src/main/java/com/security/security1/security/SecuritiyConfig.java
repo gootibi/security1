@@ -41,26 +41,12 @@ public class SecuritiyConfig {
 	// * @throws Exception
 	// */
 
-	// @Bean
-	// public SecurityFilterChain securityFilterChain(HttpSecurity http) throws
-	// Exception {
-	// return http
-	// .authorizeHttpRequests(auth -> {
-	// auth.requestMatchers("/").permitAll();
-	// auth.requestMatchers("/api/posts/**").hasRole("ADMIN");
-	// auth.anyRequest().authenticated();
-	// })
-	// .csrf(AbstractHttpConfigurer::disable)
-	// .httpBasic(Customizer.withDefaults())
-	// .build();
-	// }
-
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.authorizeHttpRequests(auth -> {
 					auth.requestMatchers("/").permitAll();
-					auth.requestMatchers("/api/posts/**").hasRole("USER");
+					auth.requestMatchers("/api/posts/**").hasRole("ADMIN");
 					auth.anyRequest().authenticated();
 				}
 
@@ -69,5 +55,4 @@ public class SecuritiyConfig {
 				.httpBasic(Customizer.withDefaults())
 				.build();
 	}
-
 }
