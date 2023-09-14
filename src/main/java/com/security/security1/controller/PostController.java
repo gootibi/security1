@@ -10,7 +10,7 @@ public class PostController {
 
     @GetMapping
     String findAll() {
-        return "All posts!";
+        return "All posts!!!";
     }
 
 }
