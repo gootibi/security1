@@ -2,6 +2,7 @@ package com.security.security1.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -47,6 +48,7 @@ public class SecuritiyConfig {
 				.authorizeHttpRequests(auth -> {
 					auth.requestMatchers("/").permitAll();
 					auth.requestMatchers("/api/posts/**").hasRole("ADMIN");
+					auth.requestMatchers(HttpMethod.GET, "/login").permitAll();
 					auth.anyRequest().authenticated();
 				}
 
